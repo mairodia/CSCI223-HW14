@@ -15,29 +15,48 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main(int argc, char** argv)
 {
     if(strchr(*argv, 'h') != NULL)
     {
-        if(isxdigit(argv[6]))
+        for(int index = 0; index < argc; ++index)
         {
-            printf("%d\n", argv[6]);
-        }
-        else
-        {
-            puts("Invalid input...");
+            char test;
+            test = *argv[index];
+
+            if(isxdigit(test))
+            {
+                printf("%d\n", test);
+            }
+            else
+            {
+                if(index == 1)
+                {
+                    puts("Invalid input...");
+                }
+            }
         }
     }
     else
     {
-        if(isdigit(argv[6]))
+        for(int index = 0; index < argc; ++ index)
         {
-            printf(".2hhX\n", argv[6]);
-        }
-        else
-        {
-            puts("Invalid input...");
+            char test;
+            test = *argv[index];
+
+            if(isdigit(test))
+            {
+                printf("%x\n", test);
+            }
+            else
+            {
+                if(index == 1)
+                {
+                    puts("Invalid input...");
+                }
+            }
         }
     }
     return 0;
